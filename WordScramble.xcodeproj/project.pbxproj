@@ -13,6 +13,7 @@
 		96A05B14245DFC190049F71E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96A05B13245DFC190049F71E /* Assets.xcassets */; };
 		96A05B17245DFC190049F71E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96A05B16245DFC190049F71E /* Preview Assets.xcassets */; };
 		96A05B1A245DFC190049F71E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A05B18245DFC190049F71E /* LaunchScreen.storyboard */; };
+		96A05B22245E2A210049F71E /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96A05B21245E2A210049F71E /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		96A05B16245DFC190049F71E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		96A05B19245DFC190049F71E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96A05B1B245DFC190049F71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96A05B21245E2A210049F71E /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				96A05B11245DFC180049F71E /* ContentView.swift */,
 				96A05B13245DFC190049F71E /* Assets.xcassets */,
 				96A05B18245DFC190049F71E /* LaunchScreen.storyboard */,
+				96A05B21245E2A210049F71E /* start.txt */,
 				96A05B1B245DFC190049F71E /* Info.plist */,
 				96A05B15245DFC190049F71E /* Preview Content */,
 			);
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96A05B1A245DFC190049F71E /* LaunchScreen.storyboard in Resources */,
+				96A05B22245E2A210049F71E /* start.txt in Resources */,
 				96A05B17245DFC190049F71E /* Preview Assets.xcassets in Resources */,
 				96A05B14245DFC190049F71E /* Assets.xcassets in Resources */,
 			);
