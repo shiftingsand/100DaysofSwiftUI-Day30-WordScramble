@@ -12,6 +12,11 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+
+    @State private var errorTitle = ""
+    @State private var errorMessage = ""
+    @State private var showingError = false
+
     var body: some View {
         NavigationView {
             VStack {
@@ -25,8 +30,13 @@ struct ContentView: View {
                     Text(indexer)
                 }
             }
-        .navigationBarTitle(rootWord)
-        .onAppear(perform: startGame)
+            .navigationBarTitle(rootWord)
+            .onAppear(perform: startGame)
+            .alert(isPresented: $showingError) {
+                Alert(title: Text(errorTitle),
+                      message: Text(errorMessage),
+                      dismissButton: .default(Text("OK")))
+            }
         }
     }
     
@@ -36,6 +46,21 @@ struct ContentView: View {
                 .trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard answer.count > 0 else {
+            return
+        }
+        
+        guard isOriginal(word: answer) else {
+            wordError(title: "Word used already", message: "Be more original")
+            return
+        }
+        
+        guard isPossible(word: answer) else {
+            wordError(title: "Word not recognized", message: "You can't just make them up you know!")
+            return
+        }
+        
+        guard isReal(word: answer) else {
+            wordError(title: "Word not possible", message: "That isn't a real word!")
             return
         }
         
@@ -53,6 +78,42 @@ struct ContentView: View {
         }
         
         fatalError("Could not load start.txt from bundle.")
+    }
+    
+    func isOriginal(word: String) -> Bool {
+        !usedWords.contains(word)
+    }
+    
+    // loop through a possible word and remove each letter from a temp
+    // copy of our root word. if we make it to the end of the function
+    // then we know it's possible to spell the root word from the
+    // letters in the passed in word.
+    func isPossible(word: String) -> Bool {
+        var tempWord = rootWord.lowercased()
+        
+        for letter in word {
+            if let pos = tempWord.firstIndex(of: letter) {
+                tempWord.remove(at: pos)
+            } else {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    func isReal(word: String) -> Bool {
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: word.utf16.count)
+        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+        
+        return misspelledRange.location == NSNotFound
+    }
+
+    func wordError(title : String, message :String) {
+        errorTitle = title
+        errorMessage = message
+        showingError = true
     }
 }
 
